@@ -232,3 +232,22 @@ a.umenulinks:hover {
 	text-decoration: underline;
 }
 
+
+summary {
+   ...
+   list-style: none; /* Triangle not shown */
+}
+/* Style für Webkit-Browser */
+summary::-webkit-details-marker {
+   display: none; /* Triangle not shown */
+}
+summary::before {
+   padding-right: .25rem;
+   content: '+ '; /* Instead of Triangle closed */
+}
+details[open] summary::before {
+   padding-right: .25rem;
+   font-style: italic;
+   content: '- '; /* Instead of Triangle open */
+}
+
