@@ -233,4 +233,50 @@ a.umenulinks:hover {
 }
 
 
+details.paper { margin: 0 0 1.1em; }
+
+details.paper > summary {
+  list-style: none;            /* hide default triangle */
+  cursor: pointer;
+  position: relative;
+  padding-left: 1.3em;
+}
+details.paper > summary::-webkit-details-marker { display: none; }
+
+/* rotating arrow on the left */
+details.paper > summary::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #8b1e3f;
+  transition: transform .2s ease;
+}
+details.paper[open] > summary::before { transform: rotate(90deg); }
+
+/* "Abstract" pill at the end of the line */
+details.paper > summary::after {
+  content: "Abstract ▾";
+  display: inline-block;
+  margin-left: .5em;
+  padding: 0 .55em;
+  font-size: .75em;
+  border: 1px solid #c9a9b3;
+  border-radius: 1em;
+  color: #8b1e3f;
+  white-space: nowrap;
+  transition: background .15s;
+}
+details.paper[open] > summary::after { content: "Hide ▴"; }
+details.paper > summary:hover::after { background: #f6eef1; }
+
+/* the abstract itself */
+details.paper > p {
+  margin: .5em 0 0 1.3em;
+  padding: .6em .9em;
+  border-left: 3px solid #8b1e3f;
+  background: #faf6f7;
+  animation: fadein .25s ease;
+}
+@keyframes fadein { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; } }
+
 
